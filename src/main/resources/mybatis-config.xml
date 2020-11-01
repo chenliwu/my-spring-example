@@ -37,6 +37,6 @@
         但是如果mybatis注解中包含@resultMap注解，则mapper必须配置，给resultMap注解使用
     -->
     <!--<mappers>-->
-        <!--<mapper resource="mapper/UserDao.xml"/>-->
+        <!--<mapper resource="mapper/SysUserDao.xml"/>-->
     <!--</mappers>-->
 </configuration>

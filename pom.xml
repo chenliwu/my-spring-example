@@ -210,11 +210,19 @@
             <artifactId>velocity</artifactId>
             <version>1.7</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatis-plus</artifactId>-->
+<!--            <version>2.0.1</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
-            <version>2.0.1</version>
+            <version>3.4.0</version>
         </dependency>
+
 
         <!-- 集成shiro-->
         <!-- shiro依赖 -->
@@ -262,12 +270,6 @@
             <version>8.0.19</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
@@ -299,74 +301,6 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.23</version>
         </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
-        <!--        <dependency>-->
-        <!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-        <!--            <artifactId>jackson-dataformat-xml</artifactId>-->
-        <!--            <version>2.9.8</version>-->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-soap -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.cxf</groupId>-->
-        <!--            <artifactId>cxf-rt-bindings-soap</artifactId>-->
-        <!--            <version>3.3.3</version>-->
-        <!--        </dependency>-->
-
-
-<!--        <dependency>-->
-<!--            <groupId>org.apache.cxf</groupId>-->
-<!--            <artifactId>cxf-rt-frontend-jaxws</artifactId>-->
-<!--            <version>3.2.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.cxf</groupId>-->
-<!--            <artifactId>cxf-rt-transports-http</artifactId>-->
-<!--            <version>3.2.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.cxf</groupId>-->
-<!--            <artifactId>cxf-core</artifactId>-->
-<!--            <version>3.2.1</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; Jetty is needed if you're using the CXFServlet &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.cxf</groupId>-->
-<!--            <artifactId>cxf-rt-transports-http-jetty</artifactId>-->
-<!--            <version>3.2.1</version>-->
-<!--        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-databind</artifactId>-->
-<!--            <version>2.10.2</version>-->
-<!--        </dependency>-->
-
-
 
     </dependencies>
 

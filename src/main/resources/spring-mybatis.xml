@@ -53,14 +53,8 @@
         <property name="dataSource" ref="p6dataSource"/>
     </bean>
 
-    <!-- 创建sessionFactory -->
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-    <!--<property name="dataSource" ref="p6dataSource"/>-->
-    <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-    <!--</bean>-->
-
     <!--创建sessionFactory，spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
-    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <!--数据库配置-->
         <property name="dataSource" ref="p6dataSource"/>
         <!--MyBatis配置文件-->
@@ -68,11 +62,12 @@
         <!--&lt;!&ndash; 自动扫描mapping.xml文件 &ndash;&gt;-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
 
+        <!-- spring xml 方式 -->
         <property name="plugins">
             <array>
-                <!-- 分页插件配置 -->
-                <bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
-                    <property name="dialectType" value="mysql"/>
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+                    <!-- COUNT SQL 解析.可以没有 -->
+                    <property name="countSqlParser" ref="countSqlParser"/>
                 </bean>
             </array>
         </property>
@@ -81,36 +76,22 @@
 
     </bean>
 
-
-    <bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
-        <!--
-            AUTO->`0`("数据库ID自增")
-             INPUT->`1`(用户输入ID")
-            ID_WORKER->`2`("全局唯一ID")
-            UUID->`3`("全局唯一ID")
-        -->
-        <property name="idType" value="2"/>
-        <!--
-            MYSQL->`mysql`
-            ORACLE->`oracle`
-            DB2->`db2`
-            H2->`h2`
-            HSQL->`hsql`
-            SQLITE->`sqlite`
-            POSTGRE->`postgresql`
-            SQLSERVER2005->`sqlserver2005`
-            SQLSERVER->`sqlserver`
-        -->
-        <!-- Oracle需要添加该项 -->
-        <!-- <property name="dbType" value="oracle" /> -->
-        <!-- 全局表为下划线命名设置 true -->
-        <property name="dbColumnUnderline" value="true"/>
+    <bean id="countSqlParser" class="com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize">
+        <!-- 设置为 true 可以优化部分 left join 的sql -->
+        <property name="optimizeJoin" value="true"/>
     </bean>
+
+    <bean name="defaultIdentifierGenerator" class="com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator"/>
+
+    <bean id="globalConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+        <property name="identifierGenerator" ref="defaultIdentifierGenerator"/>
+    </bean>
+
 
     <!-- 自动扫描dao包（Spring会自动查找其下的类） -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--        <property name="basePackage" value="com.chenl.ssm.demo.mapper"/>-->
-        <property name="basePackage" value="com.chenlw.java.web.utils.mapper"/>
+        <property name="basePackage" value="com.chenlw.spring.example.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
@@ -135,7 +116,7 @@
           第四个 .. —— 通配 方法可以有0个或多个参数
 	 -->
     <aop:config>
-        <aop:pointcut id="interceptorPointCuts" expression="execution(* com.chenlw.java.web.utils.service.*.*(..))"/>
+        <aop:pointcut id="interceptorPointCuts" expression="execution(* com.chenlw.spring.example.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts"/>
     </aop:config>
 

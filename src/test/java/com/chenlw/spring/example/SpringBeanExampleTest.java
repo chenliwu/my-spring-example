@@ -4,6 +4,8 @@ package com.chenlw.spring.example;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class SpringBeanExampleTest {
 
     public static void main(String[] args) {
