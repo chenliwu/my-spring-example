@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,7 +33,33 @@ public class UserMapperTest {
     }
 
     @Test
-    public void queryOne(){
+    public void testQueryList() {
+        System.out.println("===========开始查询数据==============");
+        long millis = System.currentTimeMillis();
+        List<SysUser> userList = getTestUserList();
+        System.out.println("耗时：" + (System.currentTimeMillis() - millis) + "ms");
+        System.out.println("===========查询数据结束==============");
+        Assert.assertNotNull(userList);
+        for (SysUser user : userList) {
+            System.out.println(user.toString());
+        }
+    }
+
+    public List<SysUser> getTestUserList() {
+        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
+        List<String> loginNameList = new ArrayList<>();
+        loginNameList.add("loginName600000");
+        loginNameList.add("loginName500000");
+        loginNameList.add("loginName400000");
+        loginNameList.add("loginName300000");
+        loginNameList.add("loginName200000");
+        loginNameList.add("loginName100000");
+        queryWrapper.in("login_name", loginNameList);
+        return sysUserMapper.selectList(queryWrapper);
+    }
+
+    @Test
+    public void queryOne() {
         SysUser sysUser = new SysUser();
         sysUser.setLoginName("loginName600000");
         QueryWrapper<SysUser> wrapper = new QueryWrapper<>(sysUser);
@@ -41,7 +68,7 @@ public class UserMapperTest {
         // System.out.println("查询结果："+sysUserMapper.selectOne(sysUser));
         List<SysUser> list = sysUserMapper.selectList(wrapper);
         Assert.assertNotNull(list);
-        System.out.println("耗时：" + (System.currentTimeMillis() - millis)+"ms");
+        System.out.println("耗时：" + (System.currentTimeMillis() - millis) + "ms");
         System.out.println("===========查询数据结束==============");
     }
 
@@ -76,7 +103,7 @@ public class UserMapperTest {
             sysUserMapper.insert(sysUser);
         }
         // 113636 ms
-        System.out.println("插入数据耗时：" + (System.currentTimeMillis() - millis)+"ms");
+        System.out.println("插入数据耗时：" + (System.currentTimeMillis() - millis) + "ms");
         System.out.println("==========插入数据结束===========");
     }
 
