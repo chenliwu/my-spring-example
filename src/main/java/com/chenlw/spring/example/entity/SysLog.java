@@ -4,6 +4,8 @@ package com.chenlw.spring.example.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.util.Date;
+
 /**
  * @author chenlw
  * @since 2020-11-01
@@ -21,7 +23,7 @@ public class SysLog {
     private String operType;
 
     @TableField("created_time")
-    private String createdTime;
+    private Date createdTime;
 
     @TableField("ip")
     private String ip;
@@ -50,11 +52,11 @@ public class SysLog {
         this.operType = operType;
     }
 
-    public String getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(String createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
