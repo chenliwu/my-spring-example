@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chenlw.java.web.utils.mapper.UserMapper">
+<mapper namespace="com.chenlw.spring.example.dao.SysLogMapper">
     <resultMap id="BaseResultMap" type="com.chenlw.spring.example.entity.SysLog">
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
@@ -10,11 +10,12 @@
 
     </sql>
 
-    <select id="selectUserLogList" resultType="com.chenlw.spring.example.entity.SysLog">
+    <select id="selectUserLogList" parameterType="com.chenlw.spring.example.entity.SysUser" resultType="com.chenlw.spring.example.entity.SysLog">
         SELECT
             SLOG.*
         FROM sys_log SLOG
-        INNER JOIN sys_user SUER ON SUER.ID = SLOG.USER_ID
+        INNER JOIN sys_user SUSER ON SUSER.ID = SLOG.USER_ID
+        WHERE SUSER.login_name = #{loginName}
     </select>
 
 </mapper>

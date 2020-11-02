@@ -28,7 +28,15 @@ public class SysLogMapperTest {
 
     @Test
     public void testInnerJoinQuery() {
-        QueryWrapper<SysLog> queryWrapper = new QueryWrapper<>();
+        SysUser sysUser = new SysUser();
+        sysUser.setLoginName("loginName600000");
+        // 查询登录名为loginName600000用户的访问日志
+        System.out.println("===========开始查询数据==============");
+        long millis = System.currentTimeMillis();
+        List<SysLog> sysLogList = sysLogMapper.selectUserLogList(sysUser);
+        System.out.println("耗时：" + (System.currentTimeMillis() - millis) + "ms");
+        System.out.println("数据数量：" + sysLogList.size());
+        System.out.println("===========查询数据结束==============");
 
     }
 
